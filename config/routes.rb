@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # resources :users
+  resources :posts
+  devise_for :users, controllers: { # <- rails g devise:controllers sagt so machen
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   devise_for :admins
   root "home#index"
 
